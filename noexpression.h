@@ -4,12 +4,12 @@
 #include "expression_global.h"
 #include "unaryexpression.h"
 
-class EXPRESSIONSHARED_EXPORT NoExpression: public UnaryExpression<bool>
+class EXPRESSIONSHARED_EXPORT NoExpression final: public UnaryExpression<bool>
 {
 public:
     NoExpression() = default;
     NoExpression(const NoExpression&) = default;
-    ~NoExpression() = default;
+    ~NoExpression() override = default;
 
     NoExpression* clone() const override;
 

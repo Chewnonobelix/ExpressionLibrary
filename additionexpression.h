@@ -4,19 +4,19 @@
 #include "binaryexpression.h"
 
 template<class T>
-class AdditionExpression: public BinaryExpression<T>
+class AdditionExpression final: public BinaryExpression<T>
 {
 public:
     AdditionExpression() = default;
     AdditionExpression(const AdditionExpression<T>&) = default;
-    ~AdditionExpression() = default;
+    ~AdditionExpression() override = default;
 
-    T evaluate() const
+    T evaluate() const override
     {
         return this->e1()->evaluate() + this->e2()->evaluate();
     }
 
-    AdditionExpression<T>* clone() const
+    AdditionExpression<T>* clone() const override
     {
         return new AdditionExpression<T>(*this);
     }

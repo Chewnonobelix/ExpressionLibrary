@@ -4,12 +4,12 @@
 #include "expression_global.h"
 #include "binaryexpression.h"
 
-class EXPRESSIONSHARED_EXPORT ImpliesExpression: public BinaryExpression<bool>
+class EXPRESSIONSHARED_EXPORT ImpliesExpression final: public BinaryExpression<bool>
 {
 public:
     ImpliesExpression() = default;
     ImpliesExpression(const ImpliesExpression&) = default;
-    ~ImpliesExpression() = default;
+    ~ImpliesExpression() override = default;
 
     bool evaluate() const override;
 

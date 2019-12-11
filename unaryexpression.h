@@ -15,7 +15,7 @@ public:
     UnaryExpression(const UnaryExpression<T>& e): Expression<T>(e), m_e(e.m_e->clone())
     {}
 
-    ~UnaryExpression()
+    ~UnaryExpression() override
     {
         if(m_e != nullptr)
             delete m_e;

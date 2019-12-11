@@ -14,7 +14,7 @@ public:
 
     ValueExpression(const ValueExpression<T>&) = default;
 
-    ~ValueExpression() = default;
+    ~ValueExpression() override = default ;
 
 
     void set(const T& value)
@@ -22,12 +22,12 @@ public:
         m_value = value;
     }
 
-    T evaluate() const
+    T evaluate() const override
     {
         return m_value;
     }
 
-    ValueExpression<T>* clone() const
+    ValueExpression<T>* clone() const override
     {
         return new ValueExpression<T>(*this);
     }

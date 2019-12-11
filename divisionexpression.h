@@ -4,19 +4,19 @@
 #include "binaryexpression.h"
 
 template<class T>
-class DivisionExpression: public BinaryExpression<T>
+class DivisionExpression final: public BinaryExpression<T>
 {
 public:
     DivisionExpression() = default;
     DivisionExpression(const DivisionExpression<T>&) = default;
-    ~DivisionExpression() = default;
+    ~DivisionExpression() override = default;
 
-    T evaluate() const
+    T evaluate() const override
     {
         return this->e1()->evaluate() / this->e2()->evaluate();
     }
 
-    DivisionExpression<T>* clone() const
+    DivisionExpression<T>* clone() const override
     {
         return new DivisionExpression<T>(*this);
     }

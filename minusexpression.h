@@ -4,19 +4,19 @@
 #include "binaryexpression.h"
 
 template<class T>
-class MinusExpression: public BinaryExpression<T>
+class MinusExpression final: public BinaryExpression<T>
 {
 public:
     MinusExpression() = default;
     MinusExpression(const MinusExpression<T>&) = default;
-    ~MinusExpression() = default;
+    ~MinusExpression() override = default;
 
-    T evaluate() const
+    T evaluate() const override
     {
         return this->e1()->evaluate() - this->e2()->evaluate();
     }
 
-    MinusExpression<T>* clone() const
+    MinusExpression<T>* clone() const override
     {
         return new MinusExpression<T>(*this);
     }

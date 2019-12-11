@@ -15,7 +15,7 @@ public:
     BinaryExpression<T>(const BinaryExpression<T>& e): Expression<T>(e), m_e1(e.m_e1->clone()), m_e2(e.m_e2->clone())
     {}
 
-    ~BinaryExpression<T>()
+    ~BinaryExpression<T>()  override
     {
         if(m_e1 != nullptr)
             delete m_e1;

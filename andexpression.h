@@ -4,12 +4,12 @@
 #include "expression_global.h"
 #include "binaryexpression.h"
 
-class EXPRESSIONSHARED_EXPORT AndExpression: public BinaryExpression<bool>
+class EXPRESSIONSHARED_EXPORT AndExpression final: public BinaryExpression<bool>
 {
 public:
     AndExpression() = default;
     AndExpression(const AndExpression&) = default;
-    ~AndExpression() = default;
+    ~AndExpression() override = default;
 
     bool evaluate() const override;
 
