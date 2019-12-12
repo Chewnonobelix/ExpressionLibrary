@@ -12,7 +12,7 @@ public:
     ~EquivalentExpression() override = default;
 
     bool evaluate() const override;
-    EquivalentExpression* clone() const override;
+    QSharedPointer<Expression<bool>> clone() const override;
 };
 #endif // EQUIVALENTEXPRESSION
 

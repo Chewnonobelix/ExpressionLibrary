@@ -16,9 +16,9 @@ public:
         return this->e1()->evaluate() - this->e2()->evaluate();
     }
 
-    MinusExpression<T>* clone() const override
+    QSharedPointer<Expression<T>> clone() const override
     {
-        return new MinusExpression<T>(*this);
+        return DesignPattern::factory<MinusExpression<T>>(*this);
     }
 };
 

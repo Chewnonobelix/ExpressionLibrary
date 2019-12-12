@@ -5,7 +5,7 @@ bool OrExpression::evaluate() const
     return e1()->evaluate() || e2()->evaluate();
 }
 
-OrExpression* OrExpression::clone() const
+QSharedPointer<Expression<bool> > OrExpression::clone() const
 {
-    return new OrExpression(*this);
+    return DesignPattern::factory<OrExpression>(*this);
 }

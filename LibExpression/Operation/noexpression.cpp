@@ -5,7 +5,7 @@ bool NoExpression::evaluate() const
     return !e()->evaluate();
 }
 
-NoExpression* NoExpression::clone() const
+QSharedPointer<Expression<bool> > NoExpression::clone() const
 {
-    return new NoExpression(*this);
+    return DesignPattern::factory<NoExpression>(*this);
 }

@@ -62,7 +62,6 @@ void TestExpression::iniTestCase()
      m_eq3.setE2(m_b3.clone());
      m_eq4.setE1(m_b2.clone());
      m_eq4.setE2(m_b4.clone());
-
 }
 
 void TestExpression::cleanupTestCase()

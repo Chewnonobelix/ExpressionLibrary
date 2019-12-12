@@ -16,9 +16,9 @@ public:
         return this->e1()->evaluate() * this->e2()->evaluate();
     }
 
-    MultiplicationExpression<T>* clone() const override
+    QSharedPointer<Expression<T>> clone() const override
     {
-        return new MultiplicationExpression<T>(*this);
+        return DesignPattern::factory<MultiplicationExpression<T>>(*this);
     }
 };
 

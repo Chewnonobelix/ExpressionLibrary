@@ -11,7 +11,7 @@ public:
     NoExpression(const NoExpression&) = default;
     ~NoExpression() override = default;
 
-    NoExpression* clone() const override;
+    QSharedPointer<Expression<bool>> clone() const override;
 
     bool evaluate() const override;
 };

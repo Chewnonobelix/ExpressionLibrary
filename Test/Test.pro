@@ -1,6 +1,6 @@
 QT += testlib
 QT += gui core widgets network xml xmlpatterns testlib
-CONFIG += qt warn_on depend_includepath testcase c++14
+CONFIG += qt warn_on depend_includepath testcase c++17
 
 TEMPLATE = app
 
@@ -11,4 +11,6 @@ SOURCES +=  \
 HEADERS += \
     testexpression.h
 
-INCLUDEPATH += ../LibExpression/Core ../LibExpression/Operation
+INCLUDEPATH += ../LibExpression/Core ../LibExpression/Operation ../../DesignLibrary/DesignPattern
+DEPENDPATH += $$OUT_PWD/../LibExpression/debug
+LIBS += -L$$OUT_PWD/../LibExpression/debug/ -lLibExpression

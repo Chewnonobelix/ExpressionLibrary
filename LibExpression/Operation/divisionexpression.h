@@ -16,9 +16,9 @@ public:
         return this->e1()->evaluate() / this->e2()->evaluate();
     }
 
-    DivisionExpression<T>* clone() const override
+    QSharedPointer<Expression<T>> clone() const override
     {
-        return new DivisionExpression<T>(*this);
+        return DesignPattern::factory<DivisionExpression<T>>(*this);
     }
 };
 

@@ -34,4 +34,4 @@ HEADERS += Core/expression.h\
     Operation/noexpression.h \
     Core/constantexpression.h
 
-INCLUDEPATH = Core/ Operation/ 
+INCLUDEPATH = Core/ Operation/ ../../DesignLibrary/DesignPattern

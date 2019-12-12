@@ -13,7 +13,7 @@ public:
 
     bool evaluate() const override;
 
-    OrExpression* clone() const override;
+    QSharedPointer<Expression<bool>> clone() const override;
 };
 #endif // OREXPRESSION
 

@@ -7,39 +7,32 @@ template<class T>
 class BinaryExpression: public Expression<T>
 {
 private:
-    Expression<T>* m_e1;
-    Expression<T>* m_e2;
+    QSharedPointer<Expression<T>> m_e1;
+    QSharedPointer<Expression<T>> m_e2;
 
 public:
     BinaryExpression<T>() = default;
     BinaryExpression<T>(const BinaryExpression<T>& e): Expression<T>(e), m_e1(e.m_e1->clone()), m_e2(e.m_e2->clone())
     {}
 
-    ~BinaryExpression<T>()  override
-    {
-        if(m_e1 != nullptr)
-            delete m_e1;
+    ~BinaryExpression<T>() override = default;
 
-        if(m_e2 != nullptr)
-            delete m_e2;
-    }
-
-    Expression<T>* e1() const
+    QSharedPointer<Expression<T>> e1() const
     {
         return m_e1;
     }
 
-    Expression<T>* e2() const
+    QSharedPointer<Expression<T>> e2() const
     {
         return m_e2;
     }
 
-    void setE1(Expression<T>* e)
+    void setE1(QSharedPointer<Expression<T>> e)
     {
         m_e1 = e;
     }
 
-    void setE2(Expression<T>* e)
+    void setE2(QSharedPointer<Expression<T>> e)
     {
         m_e2 = e;
     }

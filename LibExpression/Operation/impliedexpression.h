@@ -13,7 +13,7 @@ public:
 
     bool evaluate() const override;
 
-    ImpliesExpression* clone() const override;
+    QSharedPointer<Expression<bool>> clone() const override;
 };
 #endif // IMPLIESEXPRESSION
 

@@ -2,9 +2,7 @@
 #define EXPRESSION_H
 
 #include <QSharedPointer>
-
-template<class T>
-class Expression;
+#include "designpattern.h"
 
 template<class T>
 class Expression
@@ -18,13 +16,13 @@ public:
 
     virtual ~Expression() = default;
 
-    Expression<T>& operator=(const Expression<T>&)
+    QSharedPointer<Expression<T>>& operator=(const QSharedPointer<Expression<T>>&)
     {
         return *this;
     }
 
     virtual T evaluate() const = 0;
-    virtual Expression<T>* clone() const = 0;
+    virtual QSharedPointer<Expression<T>> clone() const = 0;
 };
 
 #endif // EXPRESSION_H
