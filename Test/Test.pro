@@ -12,5 +12,5 @@ HEADERS += \
     testexpression.h
 
 INCLUDEPATH += ../LibExpression/Core ../LibExpression/Operation ../../DesignLibrary/DesignPattern
-DEPENDPATH += $$OUT_PWD/../LibExpression/debug
-LIBS += -L$$OUT_PWD/../LibExpression/debug/ -lLibExpression
+DEPENDPATH += $$OUT_PWD/../LibExpression/
+LIBS += -L$$OUT_PWD/../LibExpression/ -lLibExpression
