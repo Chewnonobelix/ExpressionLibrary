@@ -35,3 +35,5 @@ HEADERS += Core/expression.h\
     Core/constantexpression.h
 
 INCLUDEPATH = Core/ Operation/ ../../DesignLibrary/DesignPattern
+
+CONFIG += c++17
