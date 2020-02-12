@@ -1,8 +1,8 @@
 #ifndef ANDEXPRESSION
 #define ANDEXPRESSION
 
-#include "expression_global.h"
-#include "binaryexpression.h"
+#include "../Core/expression_global.h"
+#include "../Core/binaryexpression.h"
 
 class EXPRESSIONSHARED_EXPORT AndExpression final: public BinaryExpression<bool>
 {
