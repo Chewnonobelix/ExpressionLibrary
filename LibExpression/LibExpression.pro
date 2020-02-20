@@ -12,6 +12,8 @@ TEMPLATE = lib
 DEFINES += EXPRESSION_LIBRARY
 
 SOURCES += \
+    Operation/conjonctiveform.cpp \
+    Operation/disjonctiveform.cpp \
     Operation/equivalentexpression.cpp \
     Operation/andexpression.cpp \
     Operation/orexpression.cpp \
@@ -21,7 +23,10 @@ SOURCES += \
 HEADERS += Core/expression.h\
         Core/expression_global.h \
     Core/binaryexpression.h \
+    Core/naryexpression.h \
     Operation/additionexpression.h \
+    Operation/conjonctiveform.h \
+    Operation/disjonctiveform.h \
     Operation/divisionexpression.h \
     Operation/minusexpression.h \
     Operation/multiplicationexpression.h \

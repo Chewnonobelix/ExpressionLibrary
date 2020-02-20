@@ -126,3 +126,51 @@ void TestExpression::testImplies()
     QCOMPARE(m_imp3.evaluate(), true);
     QCOMPARE(m_imp4.evaluate(), true);
 }
+
+void TestExpression::testNaryPush()
+{
+    m_conj.pushBack(m_b1);
+    QCOMPARE(m_conj.count(), 1);    
+    m_conj.pushBack(m_b2);
+    QCOMPARE(m_conj.count(), 2);    
+    m_conj.pushBack(m_b3);
+    QCOMPARE(m_conj.count(), 3);    
+    m_conj.pushBack(m_b4);
+    QCOMPARE(m_conj.count(), 4);    
+    
+    m_dis.pushBack(m_b1);
+    QCOMPARE(m_dis.count(), 1);    
+    m_dis.pushBack(m_b2);
+    QCOMPARE(m_dis.count(), 2);    
+    m_dis.pushBack(m_b3);
+    QCOMPARE(m_dis.count(), 3);    
+    m_dis.pushBack(m_b4);
+    QCOMPARE(m_conj.count(), 4);    
+}
+
+void TestExpression::testConjontive()
+{
+    QCOMPARE(m_conj.evaluate(), false);
+    m_conj.clear();
+    QCOMPARE(m_conj.count(), 0);
+    
+    for(int i = 0; i < 10; i++)
+        m_conj.pushBack(m_b1);
+    
+    QCOMPARE(m_conj.count(), 10);
+    QCOMPARE(m_conj.evaluate(), true);
+}
+
+void TestExpression::testDisjonctive()
+{
+    QCOMPARE(m_dis.evaluate(), true);
+    m_dis.clear();
+    QCOMPARE(m_dis.count(), 0);
+    
+    for(int i = 0; i < 10; i++)
+        m_dis.pushBack(m_b2);
+    
+    QCOMPARE(m_dis.count(), 10);
+    QCOMPARE(m_dis.evaluate(), false);
+}
+

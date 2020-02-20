@@ -15,6 +15,8 @@
 #include "noexpression.h"
 #include "impliedexpression.h"
 #include "equivalentexpression.h"
+#include "conjonctiveform.h"
+#include "disjonctiveform.h"
 
 class TestExpression : public QObject
 {
@@ -35,6 +37,9 @@ private:
     ImpliesExpression m_imp1, m_imp2, m_imp3, m_imp4;
     EquivalentExpression m_eq1, m_eq2, m_eq3, m_eq4;
 
+    ConjonctiveForm m_conj;
+    DisjonctiveForm m_dis;
+    
     NoExpression m_no1, m_no2;
 
 private slots:
@@ -51,6 +56,10 @@ private slots:
     void testNot();
     void testEquivalent();
     void testImplies();
+    
+    void testNaryPush();
+    void testConjontive();
+    void testDisjonctive();
 };
 
 #endif // TESTEXPRESSION_H
