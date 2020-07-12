@@ -13,4 +13,4 @@ HEADERS += \
 
 INCLUDEPATH += ../LibExpression/Core ../LibExpression/Operation ../../DesignLibrary/DesignPattern
 DEPENDPATH += $$OUT_PWD/../LibExpression/
-LIBS += -L$$OUT_PWD/../LibExpression/ -lLibExpression
+LIBS += -L$$OUT_PWD/../LibExpression/debug -lLibExpression
