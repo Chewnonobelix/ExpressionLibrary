@@ -1,5 +1,5 @@
 QT += testlib
-QT += gui core widgets network xml xmlpatterns testlib
+QT += gui core widgets network xml testlib
 CONFIG += qt warn_on depend_includepath testcase c++17
 
 TEMPLATE = app
