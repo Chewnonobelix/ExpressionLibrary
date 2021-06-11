@@ -30,7 +30,6 @@ public:
 
     QSharedPointer<Expression<T>> clone() const override
     {
-//        return new ValueExpression<T>(*this);
         return DesignPattern::factory<ValueExpression<T>>(*this);
     }
 };
