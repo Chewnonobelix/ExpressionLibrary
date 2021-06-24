@@ -32,6 +32,8 @@ HEADERS += Core/expression.h\
     Operation/Arithmetic/multiplicationexpression.h \
     Operation/Comparaison/equalexpression.h \
     Operation/Comparaison/equalexpression.h \
+    Operation/Comparaison/inferiorexpression.h \
+    Operation/Comparaison/superiorexpression.h \
     Operation/Logic/andexpression.h \
     Operation/Logic/conjonctiveform.h \
     Operation/Logic/disjonctiveform.h \

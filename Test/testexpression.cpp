@@ -184,3 +184,25 @@ void TestExpression::testEqual()
     m_equal.setE2(m_minus.clone());
     QCOMPARE(m_equal.evaluate(), false);
 }
+
+void TestExpression::testInferior()
+{
+    m_inferior.setE1(m_add.clone());
+    m_inferior.setE2(m_mult.clone());
+
+    QCOMPARE(m_inferior.evaluate(), true);
+
+    m_inferior.setE2(m_minus.clone());
+    QCOMPARE(m_inferior.evaluate(), false);
+}
+
+void TestExpression::testSuperior()
+{
+    m_superior.setE1(m_mult.clone());
+    m_superior.setE2(m_add.clone());
+
+    QCOMPARE(m_superior.evaluate(), true);
+
+    m_superior.setE2(m_mult.clone());
+    QCOMPARE(m_superior.evaluate(), false);
+}
