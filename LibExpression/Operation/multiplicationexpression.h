@@ -1,7 +1,7 @@
 #ifndef MULTIPLICATIONEXPRESSION
 #define MULTIPLICATIONEXPRESSION
 
-#include "binaryexpression.h"
+#include "Core/binaryexpression.h"
 
 template<class T>
 class MultiplicationExpression final: public BinaryExpression<T>

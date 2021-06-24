@@ -1,8 +1,8 @@
 #ifndef IMPLIESEXPRESSION
 #define IMPLIESEXPRESSION
 
-#include "expression_global.h"
-#include "binaryexpression.h"
+#include "Core/expression_global.h"
+#include "Core/binaryexpression.h"
 
 class EXPRESSIONSHARED_EXPORT ImpliesExpression final: public BinaryExpression<bool>
 {

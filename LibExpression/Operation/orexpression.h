@@ -1,8 +1,8 @@
 #ifndef OREXPRESSION
 #define OREXPRESSION
 
-#include "expression_global.h"
-#include "binaryexpression.h"
+#include "Core/expression_global.h"
+#include "Core/binaryexpression.h"
 
 class EXPRESSIONSHARED_EXPORT OrExpression final: public BinaryExpression<bool>
 {

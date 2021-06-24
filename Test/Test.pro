@@ -11,6 +11,6 @@ SOURCES +=  \
 HEADERS += \
     testexpression.h
 
-INCLUDEPATH += ../LibExpression/Core ../LibExpression/Operation ../../DesignLibrary/DesignPattern
+INCLUDEPATH += ../LibExpression ../../DesignLibrary/DesignPattern
 DEPENDPATH += $$OUT_PWD/../LibExpression/
 LIBS += -L$$OUT_PWD/../LibExpression/debug -lLibExpression

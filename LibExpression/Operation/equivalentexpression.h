@@ -1,8 +1,8 @@
 #ifndef EQUIVALENTEXPRESSION
 #define EQUIVALENTEXPRESSION
 
-#include "expression_global.h"
-#include "binaryexpression.h"
+#include "Core/expression_global.h"
+#include "Core/binaryexpression.h"
 
 class EXPRESSIONSHARED_EXPORT EquivalentExpression final: public BinaryExpression<bool>
 {

@@ -4,19 +4,19 @@
 #include <QObject>
 #include <QTest>
 
-#include "valueexpression.h"
-#include "additionexpression.h"
-#include "minusexpression.h"
-#include "multiplicationexpression.h"
-#include "divisionexpression.h"
+#include "Core/valueexpression.h"
+#include "Operation/additionexpression.h"
+#include "Operation/minusexpression.h"
+#include "Operation/multiplicationexpression.h"
+#include "Operation/divisionexpression.h"
 
-#include "andexpression.h"
-#include "orexpression.h"
-#include "noexpression.h"
-#include "impliedexpression.h"
-#include "equivalentexpression.h"
-#include "conjonctiveform.h"
-#include "disjonctiveform.h"
+#include "Operation/andexpression.h"
+#include "Operation/orexpression.h"
+#include "Operation/noexpression.h"
+#include "Operation/impliedexpression.h"
+#include "Operation/equivalentexpression.h"
+#include "Operation/conjonctiveform.h"
+#include "Operation/disjonctiveform.h"
 
 class TestExpression : public QObject
 {

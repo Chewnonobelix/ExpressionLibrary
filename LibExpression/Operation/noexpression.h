@@ -1,8 +1,8 @@
 #ifndef NOEXPRESSION
 #define NOEXPRESSION
 
-#include "expression_global.h"
-#include "unaryexpression.h"
+#include "Core/expression_global.h"
+#include "Core/unaryexpression.h"
 
 class EXPRESSIONSHARED_EXPORT NoExpression final: public UnaryExpression<bool>
 {
