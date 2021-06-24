@@ -174,13 +174,3 @@ void TestExpression::testDisjonctive()
     QCOMPARE(m_dis.evaluate(), false);
 }
 
-void TestExpression::testEqual()
-{
-    m_equal.setE1(m_add.clone());
-    m_equal.setE2(m_add.clone());
-
-    QCOMPARE(m_equal.evaluate(), true);
-
-    m_equal.setE2(m_minus.clone());
-    QCOMPARE(m_equal.evaluate(), false);
-}

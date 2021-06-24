@@ -12,7 +12,6 @@ TEMPLATE = lib
 DEFINES += EXPRESSION_LIBRARY
 
 SOURCES += \
-    Operation/Comparaison/equalexpression.cpp \
     Operation/Logic/andexpression.cpp \
     Operation/Logic/conjonctiveform.cpp \
     Operation/Logic/disjonctiveform.cpp \
@@ -22,7 +21,6 @@ SOURCES += \
     Operation/Logic/orexpression.cpp \
 
 HEADERS += Core/expression.h\
-    Core/alternativebinaryexpression.h \
         Core/expression_global.h \
     Core/binaryexpression.h \
     Core/naryexpression.h \
@@ -30,8 +28,7 @@ HEADERS += Core/expression.h\
     Operation/Arithmetic/divisionexpression.h \
     Operation/Arithmetic/minusexpression.h \
     Operation/Arithmetic/multiplicationexpression.h \
-    Operation/Comparaison/equalexpression.h \
-    Operation/Comparaison/equalexpression.h \
+    Operation/Comparaison/EqualExpression.h \
     Operation/Logic/andexpression.h \
     Operation/Logic/conjonctiveform.h \
     Operation/Logic/disjonctiveform.h \
