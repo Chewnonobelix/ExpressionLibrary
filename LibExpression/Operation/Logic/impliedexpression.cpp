@@ -5,7 +5,7 @@ bool ImpliesExpression::evaluate() const
     return !e1()->evaluate() || e2()->evaluate();
 }
 
-QSharedPointer<Expression<bool, bool> > ImpliesExpression::clone() const
+QSharedPointer<Expression<bool> > ImpliesExpression::clone() const
 {
     return DesignPattern::factory<ImpliesExpression>(*this);
 }

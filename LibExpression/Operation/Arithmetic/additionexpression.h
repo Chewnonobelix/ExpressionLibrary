@@ -3,22 +3,22 @@
 
 #include "Core/binaryexpression.h"
 
-template <class T, class R>
-class AdditionExpression final: public BinaryExpression<T, R>
+template<class T>
+class AdditionExpression final: public BinaryExpression<T>
 {
 public:
     AdditionExpression() = default;
-    AdditionExpression(const AdditionExpression<T, R>&) = default;
+    AdditionExpression(const AdditionExpression<T>&) = default;
     ~AdditionExpression() override = default;
 
-    R evaluate() const override
+    T evaluate() const override
     {
         return this->e1()->evaluate() + this->e2()->evaluate();
     }
 
-    QSharedPointer<Expression<T, R>> clone() const override
+    QSharedPointer<Expression<T>> clone() const override
     {
-        return DesignPattern::factory<AdditionExpression<T, R>>(*this);
+        return DesignPattern::factory<AdditionExpression<T>>(*this);
     }
 };
 

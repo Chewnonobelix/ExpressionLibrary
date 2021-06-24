@@ -25,10 +25,10 @@ public:
     TestExpression();
 
 private:
-    AdditionExpression<double, double> m_add;
-    MinusExpression<double, double> m_minus;
-    MultiplicationExpression<double, double> m_mult;
-    DivisionExpression<double, double> m_div;
+    AdditionExpression<double> m_add;
+    MinusExpression<double> m_minus;
+    MultiplicationExpression<double> m_mult;
+    DivisionExpression<double> m_div;
     ValueExpression<double> m_v1, m_v2;
 
     ValueExpression<bool> m_b1, m_b2, m_b3, m_b4;

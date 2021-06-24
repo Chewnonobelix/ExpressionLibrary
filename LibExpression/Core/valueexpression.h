@@ -4,8 +4,8 @@
 #include "expression.h"
 #include "designpattern.h"
 
-template <class T>
-class  ValueExpression: public Expression<T, T>
+template<class T>
+class  ValueExpression: public Expression<T>
 {
 protected:
     T m_value;
@@ -28,7 +28,7 @@ public:
         return m_value;
     }
 
-    QSharedPointer<Expression<T, T>> clone() const override
+    QSharedPointer<Expression<T>> clone() const override
     {
         return DesignPattern::factory<ValueExpression<T>>(*this);
     }

@@ -5,7 +5,7 @@
 #include "Core/naryexpression.h"
 #include "designpattern.h"
 
-class EXPRESSIONSHARED_EXPORT ConjonctiveForm: public NaryExpression<bool, bool>
+class EXPRESSIONSHARED_EXPORT ConjonctiveForm: public NaryExpression<bool>
 {
 public:
     ConjonctiveForm() = default;
@@ -13,7 +13,7 @@ public:
     ~ConjonctiveForm() = default;
     
     bool evaluate() const;
-    QSharedPointer<Expression<bool, bool>> clone() const;
+    QSharedPointer<Expression<bool>> clone() const;
     
 };
 
