@@ -4,7 +4,7 @@
 #include "Core/expression_global.h"
 #include "Core/binaryexpression.h"
 
-class EXPRESSIONSHARED_EXPORT ImpliesExpression final: public BinaryExpression<bool>
+class EXPRESSIONSHARED_EXPORT ImpliesExpression final: public BinaryExpression<bool, bool>
 {
 public:
     ImpliesExpression() = default;
@@ -13,7 +13,7 @@ public:
 
     bool evaluate() const override;
 
-    QSharedPointer<Expression<bool>> clone() const override;
+    QSharedPointer<Expression<bool, bool>> clone() const override;
 };
 #endif // IMPLIESEXPRESSION
 

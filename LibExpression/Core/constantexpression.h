@@ -3,7 +3,7 @@
 
 #include "valueexpression.h"
 
-template<class T>
+template <class T>
 class ConstantExpression final: public ValueExpression<T>
 {
     using parent = ValueExpression<T>;
@@ -21,7 +21,7 @@ public:
     using parent::evaluate;
     void set(const T &) = delete;
 
-    QSharedPointer<Expression<T>> clone() const override
+    QSharedPointer<Expression<T, T>> clone() const override
     {
         return DesignPattern::factory<ConstantExpression>(*this);
     }

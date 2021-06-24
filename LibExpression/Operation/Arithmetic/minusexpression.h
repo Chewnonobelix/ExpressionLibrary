@@ -3,22 +3,22 @@
 
 #include "Core/binaryexpression.h"
 
-template<class T>
-class MinusExpression final: public BinaryExpression<T>
+template <class T, class R>
+class MinusExpression final: public BinaryExpression<T, R>
 {
 public:
     MinusExpression() = default;
-    MinusExpression(const MinusExpression<T>&) = default;
+    MinusExpression(const MinusExpression<T, R>&) = default;
     ~MinusExpression() override = default;
 
-    T evaluate() const override
+    R evaluate() const override
     {
         return this->e1()->evaluate() - this->e2()->evaluate();
     }
 
-    QSharedPointer<Expression<T>> clone() const override
+    QSharedPointer<Expression<T, R>> clone() const override
     {
-        return DesignPattern::factory<MinusExpression<T>>(*this);
+        return DesignPattern::factory<MinusExpression<T, R>>(*this);
     }
 };
 

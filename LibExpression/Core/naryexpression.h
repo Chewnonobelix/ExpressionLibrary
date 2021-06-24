@@ -3,26 +3,26 @@
 
 #include "expression.h"
 
-template<class T>
-class NaryExpression: public Expression<T>
+template <class T, class R>
+class NaryExpression: public Expression<T, R>
 {
 protected:
-    QList<QSharedPointer<Expression<T>>> m_list;
+    QList<QSharedPointer<Expression<T, R>>> m_list;
 
 public:
-    NaryExpression<T>() = default;
-    NaryExpression<T>(const NaryExpression<T>&) = default;
+    NaryExpression<T, R>() = default;
+    NaryExpression<T, R>(const NaryExpression<T, R>&) = default;
     ~NaryExpression() override = default;   
     
     inline void clear() {m_list.clear();}
     inline int count() const {return m_list.count();}
     
-    void pushBack(const Expression<T>& e)
+    void pushBack(const Expression<T, R>& e)
     {
         m_list<<e.clone();
     }
     
-    void pushBack(QSharedPointer<Expression<T>>e)
+    void pushBack(QSharedPointer<Expression<T, R>>e)
     {
         m_list<<e;
     }
