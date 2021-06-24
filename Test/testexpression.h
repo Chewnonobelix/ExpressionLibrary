@@ -5,18 +5,18 @@
 #include <QTest>
 
 #include "Core/valueexpression.h"
-#include "Operation/additionexpression.h"
-#include "Operation/minusexpression.h"
-#include "Operation/multiplicationexpression.h"
-#include "Operation/divisionexpression.h"
+#include "Operation/Arithmetic/additionexpression.h"
+#include "Operation/Arithmetic/minusexpression.h"
+#include "Operation/Arithmetic/multiplicationexpression.h"
+#include "Operation/Arithmetic/divisionexpression.h"
 
-#include "Operation/andexpression.h"
-#include "Operation/orexpression.h"
-#include "Operation/noexpression.h"
-#include "Operation/impliedexpression.h"
-#include "Operation/equivalentexpression.h"
-#include "Operation/conjonctiveform.h"
-#include "Operation/disjonctiveform.h"
+#include "Operation/Logic/andexpression.h"
+#include "Operation/Logic/orexpression.h"
+#include "Operation/Logic/noexpression.h"
+#include "Operation/Logic/impliedexpression.h"
+#include "Operation/Logic/equivalentexpression.h"
+#include "Operation/Logic/conjonctiveform.h"
+#include "Operation/Logic/disjonctiveform.h"
 
 class TestExpression : public QObject
 {

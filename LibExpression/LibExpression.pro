@@ -19,13 +19,6 @@ SOURCES += \
     Operation/Logic/impliedexpression.cpp \
     Operation/Logic/noexpression.cpp \
     Operation/Logic/orexpression.cpp \
-    Operation/conjonctiveform.cpp \
-    Operation/disjonctiveform.cpp \
-    Operation/equivalentexpression.cpp \
-    Operation/andexpression.cpp \
-    Operation/orexpression.cpp \
-    Operation/noexpression.cpp \
-    Operation/impliedexpression.cpp
 
 HEADERS += Core/expression.h\
         Core/expression_global.h \
@@ -43,19 +36,8 @@ HEADERS += Core/expression.h\
     Operation/Logic/impliedexpression.h \
     Operation/Logic/noexpression.h \
     Operation/Logic/orexpression.h \
-    Operation/additionexpression.h \
-    Operation/conjonctiveform.h \
-    Operation/disjonctiveform.h \
-    Operation/divisionexpression.h \
-    Operation/minusexpression.h \
-    Operation/multiplicationexpression.h \
-    Operation/andexpression.h \
     Core/unaryexpression.h \
     Core/valueexpression.h \
-    Operation/equivalentexpression.h \
-    Operation/impliedexpression.h \
-    Operation/orexpression.h \
-    Operation/noexpression.h \
     Core/constantexpression.h
 
 INCLUDEPATH = Core/ Operation/ ../../DesignLibrary/DesignPattern
