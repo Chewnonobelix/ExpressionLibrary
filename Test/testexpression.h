@@ -19,8 +19,6 @@
 #include "Operation/Logic/disjonctiveform.h"
 
 #include "Operation/Comparaison/equalexpression.h"
-#include "Operation/Comparaison/superiorexpression.h"
-#include "Operation/Comparaison/inferiorexpression.h"
 
 class TestExpression : public QObject
 {
@@ -47,8 +45,6 @@ private:
     NoExpression m_no1, m_no2;
 
     EqualExpression<double> m_equal;
-    InferiorExpression<double> m_inferior;
-    SuperiorExpression<double> m_superior;
 
 private slots:
     void iniTestCase();
@@ -70,8 +66,6 @@ private slots:
     void testDisjonctive();
 
     void testEqual();
-    void testSuperior();
-    void testInferior();
 };
 
 #endif // TESTEXPRESSION_H
