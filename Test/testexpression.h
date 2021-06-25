@@ -18,6 +18,8 @@
 #include "Operation/Logic/conjonctiveform.h"
 #include "Operation/Logic/disjonctiveform.h"
 
+#include "Operation/Comparaison/equalexpression.h"
+
 class TestExpression : public QObject
 {
     Q_OBJECT
@@ -42,6 +44,8 @@ private:
     
     NoExpression m_no1, m_no2;
 
+    EqualExpression<double> m_equal;
+
 private slots:
     void iniTestCase();
     void cleanupTestCase();
@@ -60,6 +64,8 @@ private slots:
     void testNaryPush();
     void testConjontive();
     void testDisjonctive();
+
+    void testEqual();
 };
 
 #endif // TESTEXPRESSION_H
