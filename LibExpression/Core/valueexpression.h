@@ -12,7 +12,7 @@ protected:
 
 public:
     ValueExpression() = default;
-
+    ValueExpression(T v): m_value(v) {}
     ValueExpression(const ValueExpression<T>&) = default;
 
     ~ValueExpression() override = default ;
