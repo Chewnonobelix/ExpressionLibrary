@@ -29,6 +29,7 @@ HEADERS += Core/expression.h\
     Operation/Arithmetic/minusexpression.h \
     Operation/Arithmetic/multiplicationexpression.h \
     Operation/Comparaison/EqualExpression.h \
+    Operation/Comparaison/comparaisonexpression.h \
     Operation/Logic/andexpression.h \
     Operation/Logic/conjonctiveform.h \
     Operation/Logic/disjonctiveform.h \
