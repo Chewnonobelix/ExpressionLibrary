@@ -46,4 +46,4 @@ HEADERS += Core/expression.h\
 
 INCLUDEPATH = Core/ Operation/ ../../DesignLibrary/DesignPattern
 
-CONFIG += c++17
+CONFIG += c++20
