@@ -1,6 +1,6 @@
 QT += testlib
 QT += gui core widgets network xml testlib
-CONFIG += qt warn_on depend_includepath testcase c++20
+CONFIG += qt warn_on depend_includepath testcase c++latest
 
 TEMPLATE = app
 
