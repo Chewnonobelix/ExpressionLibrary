@@ -13,4 +13,6 @@ HEADERS += \
 
 INCLUDEPATH += ../LibExpression ../../DesignLibrary/DesignPattern
 DEPENDPATH += $$OUT_PWD/../LibExpression/
-LIBS += -L$$OUT_PWD/../LibExpression/debug -lLibExpression
+win32:CONFIG(debug, debug| release): LIBS += -L$$OUT_PWD/../LibExpression/debug
+else:win32:CONFIG(release, debug| release): LIBS += -L$$OUT_PWD/../LibExpression/release
+LIBS += -lLibExpression
