@@ -11,11 +11,11 @@ private:
     QSharedPointer<Expression<T>> m_e2;
 
 public:
-    BinaryExpression<T>() = default;
-    BinaryExpression<T>(const BinaryExpression<T>& e): Expression<T>(e), m_e1(e.m_e1->clone()), m_e2(e.m_e2->clone())
+    BinaryExpression() = default;
+    BinaryExpression(const BinaryExpression<T>& e): Expression<T>(e), m_e1(e.m_e1->clone()), m_e2(e.m_e2->clone())
     {}
 
-    ~BinaryExpression<T>() override = default;
+    ~BinaryExpression() override = default;
 
     QSharedPointer<Expression<T>> e1() const
     {

@@ -10,8 +10,8 @@ protected:
     QList<QSharedPointer<Expression<T>>> m_list;
 
 public:
-    NaryExpression<T>() = default;
-    NaryExpression<T>(const NaryExpression<T>&) = default;
+    NaryExpression() = default;
+    NaryExpression(const NaryExpression<T>&) = default;
     ~NaryExpression() override = default;   
     
     inline void clear() {m_list.clear();}
