@@ -7,61 +7,6 @@ TestExpression::TestExpression()
 
 void TestExpression::iniTestCase()
 {
-    m_v1.set(12.1);
-    m_v2.set(15.7);
-
-    m_add.setE1(m_v1.clone());
-    m_add.setE2(m_v2.clone());
-    m_minus.setE1(m_v1.clone());
-    m_minus.setE2(m_v2.clone());
-    m_mult.setE1(m_v1.clone());
-    m_mult.setE2(m_v2.clone());
-    m_div.setE1(m_v1.clone());
-    m_div.setE2(m_v2.clone());
-
-    m_b1.set(true);
-    m_b2.set(false);
-    m_b3.set(true);
-    m_b4.set(false);
-
-    m_and1.setE1(m_b1.clone());
-    m_and1.setE2(m_b3.clone());
-    m_and2.setE1(m_b1.clone());
-    m_and2.setE2(m_b4.clone());
-    m_and3.setE1(m_b2.clone());
-    m_and3.setE2(m_b3.clone());
-    m_and4.setE1(m_b2.clone());
-    m_and4.setE2(m_b4.clone());
-
-     m_no1.setE(m_b1.clone());
-     m_no2.setE(m_b2.clone());
-
-     m_or1.setE1(m_b1.clone());
-     m_or1.setE2(m_b3.clone());
-     m_or2.setE1(m_b1.clone());
-     m_or2.setE2(m_b4.clone());
-     m_or3.setE1(m_b2.clone());
-     m_or3.setE2(m_b3.clone());
-     m_or4.setE1(m_b2.clone());
-     m_or4.setE2(m_b4.clone());
-
-     m_imp1.setE1(m_b1.clone());
-     m_imp1.setE2(m_b3.clone());
-     m_imp2.setE1(m_b1.clone());
-     m_imp2.setE2(m_b4.clone());
-     m_imp3.setE1(m_b2.clone());
-     m_imp3.setE2(m_b3.clone());
-     m_imp4.setE1(m_b2.clone());
-     m_imp4.setE2(m_b4.clone());
-
-     m_eq1.setE1(m_b1.clone());
-     m_eq1.setE2(m_b3.clone());
-     m_eq2.setE1(m_b1.clone());
-     m_eq2.setE2(m_b4.clone());
-     m_eq3.setE1(m_b2.clone());
-     m_eq3.setE2(m_b3.clone());
-     m_eq4.setE1(m_b2.clone());
-     m_eq4.setE2(m_b4.clone());
 }
 
 void TestExpression::cleanupTestCase()
@@ -69,137 +14,517 @@ void TestExpression::cleanupTestCase()
 
 }
 
-void TestExpression::testAddition()
-{
-    QCOMPARE(m_add.evaluate(), (12.1+15.7));
-}
-
-void TestExpression::testMinus()
-{
-    QCOMPARE(m_minus.evaluate(), (12.1-15.7));
-}
-
-void TestExpression::testMultiplication()
-{
-    QCOMPARE(m_mult.evaluate(), (12.1*15.7));
-}
-
-void TestExpression::testDivision()
-{
-    QCOMPARE(m_div.evaluate(), (12.1/15.7));
-}
-
-
-void TestExpression::testAnd()
-{
-    QCOMPARE(m_and1.evaluate(), true);
-    QCOMPARE(m_and2.evaluate(), false);
-    QCOMPARE(m_and3.evaluate(), false);
-    QCOMPARE(m_and4.evaluate(), false);
-}
-
-void TestExpression::testOr()
-{
-    QCOMPARE(m_or1.evaluate(), true);
-    QCOMPARE(m_or2.evaluate(), true);
-    QCOMPARE(m_or3.evaluate(), true);
-    QCOMPARE(m_or4.evaluate(), false);
-}
-void TestExpression::testNot()
-{
-    QCOMPARE(m_no1.evaluate(), false);
-    QCOMPARE(m_no2.evaluate(), true);
-}
-
-void TestExpression::testEquivalent()
-{
-    QCOMPARE(m_eq1.evaluate(), true);
-    QCOMPARE(m_eq2.evaluate(), false);
-    QCOMPARE(m_eq3.evaluate(), false);
-    QCOMPARE(m_eq4.evaluate(), true);
-}
-
-void TestExpression::testImplies()
-{
-    QCOMPARE(m_imp1.evaluate(), true);
-    QCOMPARE(m_imp2.evaluate(), false);
-    QCOMPARE(m_imp3.evaluate(), true);
-    QCOMPARE(m_imp4.evaluate(), true);
-}
-
 void TestExpression::testNaryPush()
 {
-    m_conj.pushBack(m_b1);
-    QCOMPARE(m_conj.count(), 1);    
-    m_conj.pushBack(m_b2);
-    QCOMPARE(m_conj.count(), 2);    
-    m_conj.pushBack(m_b3);
-    QCOMPARE(m_conj.count(), 3);    
-    m_conj.pushBack(m_b4);
-    QCOMPARE(m_conj.count(), 4);    
-    
-    m_dis.pushBack(m_b1);
-    QCOMPARE(m_dis.count(), 1);    
-    m_dis.pushBack(m_b2);
-    QCOMPARE(m_dis.count(), 2);    
-    m_dis.pushBack(m_b3);
-    QCOMPARE(m_dis.count(), 3);    
-    m_dis.pushBack(m_b4);
-    QCOMPARE(m_conj.count(), 4);    
+    QFETCH(QList<bool>, data);
+    QFETCH(int, r);
+
+    ConjonctiveForm conj;
+    for(auto it: data) {
+        ValueExpression<bool> v(it);
+        conj.pushBack(v);
+    }
+
+    QCOMPARE(conj.count(), r);
+}
+
+void TestExpression::testNaryPush_data()
+{
+    QTest::addColumn<QList<bool>>("data");
+    QTest::addColumn<int>("r");
+
+    QTest::newRow("0")<<QList<bool>()<<0;
+    QTest::newRow("1")<<QList<bool>{true}<<1;
+    QTest::newRow("2")<<QList<bool>{true, true}<<2;
+    QTest::newRow("3")<<QList<bool>{true, true, true}<<3;
+    QTest::newRow("4")<<QList<bool>{true, true, true, true}<<4;
+    QTest::newRow("5")<<QList<bool>{true, true, true, true, true}<<5;
 }
 
 void TestExpression::testConjontive()
 {
-    QCOMPARE(m_conj.evaluate(), false);
-    m_conj.clear();
-    QCOMPARE(m_conj.count(), 0);
-    
-    for(int i = 0; i < 10; i++)
-        m_conj.pushBack(m_b1);
-    
-    QCOMPARE(m_conj.count(), 10);
-    QCOMPARE(m_conj.evaluate(), true);
+    QFETCH(QList<bool>, data);
+    QFETCH(bool, r);
+
+    ConjonctiveForm conj;
+    for(auto it: data) {
+        ValueExpression<bool> v(it);
+        conj.pushBack(v);
+    }
+
+    QCOMPARE(conj.evaluate(), r);
+}
+
+void TestExpression::testConjontive_data()
+{
+    QTest::addColumn<QList<bool>>("data");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("1")<<QList<bool>{true}<<true;
+    QTest::newRow("2")<<QList<bool>{true, true}<<true;
+    QTest::newRow("3")<<QList<bool>{true, false, true}<<false;
+    QTest::newRow("4")<<QList<bool>{true, true, true, true}<<true;
+    QTest::newRow("5")<<QList<bool>{true, true, false, true, true}<<false;
 }
 
 void TestExpression::testDisjonctive()
 {
-    QCOMPARE(m_dis.evaluate(), true);
-    m_dis.clear();
-    QCOMPARE(m_dis.count(), 0);
-    
-    for(int i = 0; i < 10; i++)
-        m_dis.pushBack(m_b2);
-    
-    QCOMPARE(m_dis.count(), 10);
-    QCOMPARE(m_dis.evaluate(), false);
+    QFETCH(QList<bool>, data);
+    QFETCH(bool, r);
+
+    DisjonctiveForm conj;
+    for(auto it: data) {
+        ValueExpression<bool> v(it);
+        conj.pushBack(v);
+    }
+
+    QCOMPARE(conj.evaluate(), r);
+}
+
+void TestExpression::testDisjonctive_data()
+{
+    QTest::addColumn<QList<bool>>("data");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("1")<<QList<bool>{true}<<true;
+    QTest::newRow("2")<<QList<bool>{true, true}<<true;
+    QTest::newRow("3")<<QList<bool>{false, false, false}<<false;
+    QTest::newRow("4")<<QList<bool>{true, true, true, true}<<true;
+    QTest::newRow("5")<<QList<bool>{true, true, false, true, true}<<true;
 }
 
 void TestExpression::testEqual()
 {
-    m_equal.setE1(m_add.clone());
-    m_equal.setE2(m_add.clone());
+    QFETCH(int, a);
+    QFETCH(int, b);
+    QFETCH(bool, r);
 
-    QCOMPARE(m_equal.evaluate(), true);
-    m_equal.setE2(m_minus.clone());
-    QCOMPARE(m_equal.evaluate(), false);
+    EqualExpression<int> equal;
+    ValueExpression<int> va(a), vb(b);
+    equal.setE1(va.clone());
+    equal.setE2(vb.clone());
+
+    QCOMPARE(equal.evaluate(), r);
+}
+
+void TestExpression::testEqual_data()
+{
+    QTest::addColumn<int>("a");
+    QTest::addColumn<int>("b");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("1=1")<<1<<1<<true;
+    QTest::newRow("1=2")<<1<<2<<false;
+    QTest::newRow("1=3")<<1<<3<<false;
+    QTest::newRow("1=4")<<1<<4<<false;
+    QTest::newRow("1=5")<<1<<5<<false;
+    QTest::newRow("2=1")<<2<<1<<false;
+    QTest::newRow("2=2")<<2<<2<<true;
+    QTest::newRow("2=3")<<2<<3<<false;
+    QTest::newRow("2=4")<<2<<4<<false;
+    QTest::newRow("2=5")<<2<<5<<false;
+    QTest::newRow("3=1")<<3<<1<<false;
+    QTest::newRow("3=2")<<3<<2<<false;
+    QTest::newRow("3=3")<<3<<3<<true;
+    QTest::newRow("3=4")<<3<<4<<false;
+    QTest::newRow("3=5")<<3<<5<<false;
+    QTest::newRow("4=1")<<4<<1<<false;
+    QTest::newRow("4=2")<<4<<2<<false;
+    QTest::newRow("4=3")<<4<<3<<false;
+    QTest::newRow("4=4")<<4<<4<<true;
+    QTest::newRow("4=5")<<4<<5<<false;
 }
 
 void TestExpression::testInferior()
 {
-    m_inferior.setE1(m_add.clone());
-    m_inferior.setE2(m_mult.clone());
+    QFETCH(int, a);
+    QFETCH(int, b);
+    QFETCH(bool, r);
 
-    QCOMPARE(m_inferior.evaluate(), true);
-    m_inferior.setE2(m_minus.clone());
-    QCOMPARE(m_inferior.evaluate(), false);
+    InferiorExpression<int> equal;
+    ValueExpression<int> va(a), vb(b);
+    equal.setE1(va.clone());
+    equal.setE2(vb.clone());
+
+    QCOMPARE(equal.evaluate(), r);
+}
+
+void TestExpression::testInferior_data()
+{
+    QTest::addColumn<int>("a");
+    QTest::addColumn<int>("b");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("1<1")<<1<<1<<false;
+    QTest::newRow("1<2")<<1<<2<<true;
+    QTest::newRow("1<3")<<1<<3<<true;
+    QTest::newRow("1<4")<<1<<4<<true;
+    QTest::newRow("1<5")<<1<<5<<true;
+    QTest::newRow("2<1")<<2<<1<<false;
+    QTest::newRow("2<2")<<2<<2<<false;
+    QTest::newRow("2<3")<<2<<3<<true;
+    QTest::newRow("2<4")<<2<<4<<true;
+    QTest::newRow("2<5")<<2<<5<<true;
+    QTest::newRow("3<1")<<3<<1<<false;
+    QTest::newRow("3<2")<<3<<2<<false;
+    QTest::newRow("3<3")<<3<<3<<false;
+    QTest::newRow("3<4")<<3<<4<<true;
+    QTest::newRow("3<5")<<3<<5<<true;
+    QTest::newRow("4<1")<<4<<1<<false;
+    QTest::newRow("4<2")<<4<<2<<false;
+    QTest::newRow("4<3")<<4<<3<<false;
+    QTest::newRow("4<4")<<4<<4<<false;
+    QTest::newRow("4<5")<<4<<5<<true;
 }
 
 void TestExpression::testSuperior()
 {
-    m_superior.setE1(m_mult.clone());
-    m_superior.setE2(m_add.clone());
+    QFETCH(int, a);
+    QFETCH(int, b);
+    QFETCH(bool, r);
 
-    QCOMPARE(m_superior.evaluate(), true);
-    m_superior.setE1(m_minus.clone());
-    QCOMPARE(m_superior.evaluate(), false);
+    SuperiorExpression<int> equal;
+    ValueExpression<int> va(a), vb(b);
+    equal.setE1(va.clone());
+    equal.setE2(vb.clone());
+
+    QCOMPARE(equal.evaluate(), r);
+}
+
+void TestExpression::testSuperior_data()
+{
+    QTest::addColumn<int>("a");
+    QTest::addColumn<int>("b");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("1>1")<<1<<1<<false;
+    QTest::newRow("1>2")<<1<<2<<false;
+    QTest::newRow("1>3")<<1<<3<<false;
+    QTest::newRow("1>4")<<1<<4<<false;
+    QTest::newRow("1>5")<<1<<5<<false;
+    QTest::newRow("2>1")<<2<<1<<true;
+    QTest::newRow("2>2")<<2<<2<<false;
+    QTest::newRow("2>3")<<2<<3<<false;
+    QTest::newRow("2>4")<<2<<4<<false;
+    QTest::newRow("2>5")<<2<<5<<false;
+    QTest::newRow("3>1")<<3<<1<<true;
+    QTest::newRow("3>2")<<3<<2<<true;
+    QTest::newRow("3>3")<<3<<3<<false;
+    QTest::newRow("3>4")<<3<<4<<false;
+    QTest::newRow("3>5")<<3<<5<<false;
+    QTest::newRow("4>1")<<4<<1<<true;
+    QTest::newRow("4>2")<<4<<2<<true;
+    QTest::newRow("4>3")<<4<<3<<true;
+    QTest::newRow("4>4")<<4<<4<<false;
+    QTest::newRow("4>5")<<4<<5<<false;
+}
+
+void TestExpression::testAddition()
+{
+    QFETCH(double, a);
+    QFETCH(double, b);
+    QFETCH(double, r);
+
+    ValueExpression<double> va(a);
+    ValueExpression<double> vb(b);
+    AdditionExpression<double> add;
+    add.setE1(va.clone());
+    add.setE2(vb.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testAddition_data()
+{
+    QTest::addColumn<double>("a");
+    QTest::addColumn<double>("b");
+    QTest::addColumn<double>("r");
+
+    QTest::newRow("1+1")<<1.0<<1.0<<2.0;
+    QTest::newRow("1+2")<<1.0<<2.0<<3.0;
+    QTest::newRow("1+3")<<1.0<<3.0<<4.0;
+    QTest::newRow("1+4")<<1.0<<4.0<<5.0;
+    QTest::newRow("1+5")<<1.0<<5.0<<6.0;
+    QTest::newRow("2+1")<<2.0<<1.0<<3.0;
+    QTest::newRow("2+2")<<2.0<<2.0<<4.0;
+    QTest::newRow("2+3")<<2.0<<3.0<<5.0;
+    QTest::newRow("2+4")<<2.0<<4.0<<6.0;
+    QTest::newRow("2+5")<<2.0<<5.0<<7.0;
+    QTest::newRow("3+1")<<3.0<<1.0<<4.0;
+    QTest::newRow("3+2")<<3.0<<2.0<<5.0;
+    QTest::newRow("3+3")<<3.0<<3.0<<6.0;
+    QTest::newRow("3+4")<<3.0<<4.0<<7.0;
+    QTest::newRow("3+5")<<3.0<<5.0<<8.0;
+    QTest::newRow("4+1")<<4.0<<1.0<<5.0;
+    QTest::newRow("4+2")<<4.0<<2.0<<6.0;
+    QTest::newRow("4+3")<<4.0<<3.0<<7.0;
+    QTest::newRow("4+4")<<4.0<<4.0<<8.0;
+    QTest::newRow("4+5")<<4.0<<5.0<<9.0;
+}
+
+void TestExpression::testMultiplication()
+{
+    QFETCH(double, a);
+    QFETCH(double, b);
+    QFETCH(double, r);
+
+    ValueExpression<double> va(a);
+    ValueExpression<double> vb(b);
+    MultiplicationExpression<double> add;
+    add.setE1(va.clone());
+    add.setE2(vb.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testMultiplication_data()
+{
+    QTest::addColumn<double>("a");
+    QTest::addColumn<double>("b");
+    QTest::addColumn<double>("r");
+
+    QTest::newRow("1*1")<<1.0<<1.0<<1.0;
+    QTest::newRow("1*2")<<1.0<<2.0<<2.0;
+    QTest::newRow("1*3")<<1.0<<3.0<<3.0;
+    QTest::newRow("1*4")<<1.0<<4.0<<4.0;
+    QTest::newRow("1*5")<<1.0<<5.0<<5.0;
+    QTest::newRow("2*1")<<2.0<<1.0<<2.0;
+    QTest::newRow("2*2")<<2.0<<2.0<<4.0;
+    QTest::newRow("2*3")<<2.0<<3.0<<6.0;
+    QTest::newRow("2*4")<<2.0<<4.0<<8.0;
+    QTest::newRow("2*5")<<2.0<<5.0<<10.0;
+    QTest::newRow("3*1")<<3.0<<1.0<<3.0;
+    QTest::newRow("3*2")<<3.0<<2.0<<6.0;
+    QTest::newRow("3*3")<<3.0<<3.0<<9.0;
+    QTest::newRow("3*4")<<3.0<<4.0<<12.0;
+    QTest::newRow("3*5")<<3.0<<5.0<<15.0;
+    QTest::newRow("4*1")<<4.0<<1.0<<4.0;
+    QTest::newRow("4*2")<<4.0<<2.0<<8.0;
+    QTest::newRow("4*3")<<4.0<<3.0<<12.0;
+    QTest::newRow("4*4")<<4.0<<4.0<<16.0;
+    QTest::newRow("4*5")<<4.0<<5.0<<20.0;
+}
+
+void TestExpression::testMinus()
+{
+    QFETCH(double, a);
+    QFETCH(double, b);
+    QFETCH(double, r);
+
+    ValueExpression<double> va(a);
+    ValueExpression<double> vb(b);
+    MinusExpression<double> add;
+    add.setE1(va.clone());
+    add.setE2(vb.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testMinus_data()
+{
+    QTest::addColumn<double>("a");
+    QTest::addColumn<double>("b");
+    QTest::addColumn<double>("r");
+
+    QTest::newRow("1-1")<<1.0<<1.0<<0.0;
+    QTest::newRow("1-2")<<1.0<<2.0<<-1.0;
+    QTest::newRow("1-3")<<1.0<<3.0<<-2.0;
+    QTest::newRow("1-4")<<1.0<<4.0<<-3.0;
+    QTest::newRow("1-5")<<1.0<<5.0<<-4.0;
+    QTest::newRow("2-1")<<2.0<<1.0<<1.0;
+    QTest::newRow("2-2")<<2.0<<2.0<<0.0;
+    QTest::newRow("2-3")<<2.0<<3.0<<-1.0;
+    QTest::newRow("2-4")<<2.0<<4.0<<-2.0;
+    QTest::newRow("2-5")<<2.0<<5.0<<-3.0;
+    QTest::newRow("3-1")<<3.0<<1.0<<2.0;
+    QTest::newRow("3-2")<<3.0<<2.0<<1.0;
+    QTest::newRow("3-3")<<3.0<<3.0<<0.0;
+    QTest::newRow("3-4")<<3.0<<4.0<<-1.0;
+    QTest::newRow("3-5")<<3.0<<5.0<<-2.0;
+    QTest::newRow("4-1")<<4.0<<1.0<<3.0;
+    QTest::newRow("4-2")<<4.0<<2.0<<2.0;
+    QTest::newRow("4-3")<<4.0<<3.0<<1.0;
+    QTest::newRow("4-4")<<4.0<<4.0<<0.0;
+    QTest::newRow("4-5")<<4.0<<5.0<<-1.0;
+}
+
+void TestExpression::testDivision()
+{
+    QFETCH(double, a);
+    QFETCH(double, b);
+    QFETCH(double, r);
+
+    ValueExpression<double> va(a);
+    ValueExpression<double> vb(b);
+    DivisionExpression<double> add;
+    add.setE1(va.clone());
+    add.setE2(vb.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testDivision_data()
+{
+    QTest::addColumn<double>("a");
+    QTest::addColumn<double>("b");
+    QTest::addColumn<double>("r");
+
+    QTest::newRow("1/1")<<1.0<<1.0<<1.0;
+    QTest::newRow("1/2")<<1.0<<2.0<<(1.0/2);
+    QTest::newRow("1/3")<<1.0<<3.0<<(1.0/3);
+    QTest::newRow("1/4")<<1.0<<4.0<<(1.0/4);
+    QTest::newRow("1/5")<<1.0<<5.0<<(1.0/5);
+    QTest::newRow("2/1")<<2.0<<1.0<<2.0;
+    QTest::newRow("2/2")<<2.0<<2.0<<1.0;
+    QTest::newRow("2/3")<<2.0<<3.0<<(2.0/3);
+    QTest::newRow("2/4")<<2.0<<4.0<<(2.0/4);
+    QTest::newRow("2/5")<<2.0<<5.0<<(2.0/5);
+    QTest::newRow("3/1")<<3.0<<1.0<<3.0;
+    QTest::newRow("3/2")<<3.0<<2.0<<(3.0/2);
+    QTest::newRow("3/3")<<3.0<<3.0<<1.0;
+    QTest::newRow("3/4")<<3.0<<4.0<<(3.0/4);
+    QTest::newRow("3/5")<<3.0<<5.0<<(3.0/5);
+    QTest::newRow("4/1")<<4.0<<1.0<<4.0;
+    QTest::newRow("4/2")<<4.0<<2.0<<2.0;
+    QTest::newRow("4/3")<<4.0<<3.0<<(4.0/3);
+    QTest::newRow("4/4")<<4.0<<4.0<<1.0;
+    QTest::newRow("4/5")<<4.0<<5.0<<(4.0/5);
+}
+
+void TestExpression::testAnd()
+{
+    QFETCH(bool, a);
+    QFETCH(bool, b);
+    QFETCH(bool, r);
+
+    ValueExpression<bool> va(a);
+    ValueExpression<bool> vb(b);
+    AndExpression add;
+    add.setE1(va.clone());
+    add.setE2(vb.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testAnd_data()
+{
+    QTest::addColumn<bool>("a");
+    QTest::addColumn<bool>("b");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("true&true")<<true<<true<<true;
+    QTest::newRow("true&false")<<true<<false<<false;
+    QTest::newRow("false&true")<<false<<true<<false;
+    QTest::newRow("false&false")<<false<<false<<false;
+}
+
+void TestExpression::testOr()
+{
+    QFETCH(bool, a);
+    QFETCH(bool, b);
+    QFETCH(bool, r);
+
+    ValueExpression<bool> va(a);
+    ValueExpression<bool> vb(b);
+    OrExpression add;
+    add.setE1(va.clone());
+    add.setE2(vb.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testOr_data()
+{
+    QTest::addColumn<bool>("a");
+    QTest::addColumn<bool>("b");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("true&true")<<true<<true<<true;
+    QTest::newRow("true&false")<<true<<false<<true;
+    QTest::newRow("false&true")<<false<<true<<true;
+    QTest::newRow("false&false")<<false<<false<<false;
+}
+
+void TestExpression::testNot()
+{
+    QFETCH(bool, a);
+    QFETCH(bool, r);
+
+    ValueExpression<bool> va(a);
+    NoExpression add;
+    add.setE(va.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testNot_data()
+{
+    QTest::addColumn<bool>("a");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("!true")<<true<<false;
+    QTest::newRow("!false")<<false<<true;
+}
+
+void TestExpression::testEquivalent()
+{
+    QFETCH(bool, a);
+    QFETCH(bool, b);
+    QFETCH(bool, r);
+
+    ValueExpression<bool> va(a);
+    ValueExpression<bool> vb(b);
+    EquivalentExpression add;
+    add.setE1(va.clone());
+    add.setE2(vb.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testEquivalent_data()
+{
+    QTest::addColumn<bool>("a");
+    QTest::addColumn<bool>("b");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("true&true")<<true<<true<<true;
+    QTest::newRow("true&false")<<true<<false<<false;
+    QTest::newRow("false&true")<<false<<true<<false;
+    QTest::newRow("false&false")<<false<<false<<true;
+}
+
+void TestExpression::testImplies()
+{
+    QFETCH(bool, a);
+    QFETCH(bool, b);
+    QFETCH(bool, r);
+
+    ValueExpression<bool> va(a);
+    ValueExpression<bool> vb(b);
+    ImpliesExpression add;
+    add.setE1(va.clone());
+    add.setE2(vb.clone());
+
+    auto res = add.evaluate();
+    QCOMPARE(res, r);
+}
+
+void TestExpression::testImplies_data()
+{
+    QTest::addColumn<bool>("a");
+    QTest::addColumn<bool>("b");
+    QTest::addColumn<bool>("r");
+
+    QTest::newRow("true&true")<<true<<true<<true;
+    QTest::newRow("true&false")<<true<<false<<false;
+    QTest::newRow("false&true")<<false<<true<<true;
+    QTest::newRow("false&false")<<false<<false<<true;
 }

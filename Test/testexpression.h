@@ -29,49 +29,44 @@ public:
     TestExpression();
 
 private:
-    AdditionExpression<double> m_add;
-    MinusExpression<double> m_minus;
-    MultiplicationExpression<double> m_mult;
-    DivisionExpression<double> m_div;
-    ValueExpression<double> m_v1, m_v2;
-
-    ValueExpression<bool> m_b1, m_b2, m_b3, m_b4;
-    AndExpression m_and1, m_and2, m_and3, m_and4;
-    OrExpression m_or1, m_or2, m_or3, m_or4;
-    ImpliesExpression m_imp1, m_imp2, m_imp3, m_imp4;
-    EquivalentExpression m_eq1, m_eq2, m_eq3, m_eq4;
-
-    ConjonctiveForm m_conj;
-    DisjonctiveForm m_dis;
-    
-    NoExpression m_no1, m_no2;
-
-    EqualExpression<double> m_equal;
-    SuperiorExpression<double> m_superior;
-    InferiorExpression<double> m_inferior;
 
 private slots:
     void iniTestCase();
     void cleanupTestCase();
 
     void testAddition();
+    void testAddition_data();
     void testMinus();
+    void testMinus_data();
     void testMultiplication();
+    void testMultiplication_data();
     void testDivision();
+    void testDivision_data();
 
     void testAnd();
+    void testAnd_data();
     void testOr();
+    void testOr_data();
     void testNot();
+    void testNot_data();
     void testEquivalent();
+    void testEquivalent_data();
     void testImplies();
+    void testImplies_data();
     
     void testNaryPush();
+    void testNaryPush_data();
     void testConjontive();
+    void testConjontive_data();
     void testDisjonctive();
+    void testDisjonctive_data();
 
     void testEqual();
+    void testEqual_data();
     void testInferior();
+    void testInferior_data();
     void testSuperior();
+    void testSuperior_data();
 };
 
 #endif // TESTEXPRESSION_H
