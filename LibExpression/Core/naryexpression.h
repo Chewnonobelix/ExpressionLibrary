@@ -1,6 +1,8 @@
 #ifndef NARYEXPRESSION_H
 #define NARYEXPRESSION_H
 
+#include <QList>
+
 #include "expression.h"
 
 template<class T>
