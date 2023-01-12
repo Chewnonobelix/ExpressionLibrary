@@ -28,7 +28,7 @@ HEADERS += Core/expression.h\
     Operation/Arithmetic/divisionexpression.h \
     Operation/Arithmetic/minusexpression.h \
     Operation/Arithmetic/multiplicationexpression.h \
-    Operation/Comparaison/EqualExpression.h \
+    Operation/Comparaison/equalexpression.h \
     Operation/Comparaison/comparaisonexpression.h \
     Operation/Comparaison/equalexpression.h \
     Operation/Comparaison/inferiorexpression.h \
@@ -46,4 +46,4 @@ HEADERS += Core/expression.h\
 
 INCLUDEPATH = Core/ Operation/ ../../DesignLibrary/DesignPattern
 
-CONFIG += c++latest
+CONFIG += c++17

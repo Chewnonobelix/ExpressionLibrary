@@ -1,6 +1,6 @@
 QT += testlib
 QT += gui core widgets network xml testlib
-CONFIG += qt warn_on depend_includepath testcase c++latest
+CONFIG += qt warn_on depend_includepath testcase c++17
 
 TEMPLATE = app
 
@@ -15,4 +15,5 @@ INCLUDEPATH += ../LibExpression ../../DesignLibrary/DesignPattern
 DEPENDPATH += $$OUT_PWD/../LibExpression/
 win32:CONFIG(debug, debug| release): LIBS += -L$$OUT_PWD/../LibExpression/debug
 else:win32:CONFIG(release, debug| release): LIBS += -L$$OUT_PWD/../LibExpression/release
+else:unix:CONFIG(debug, debug| release): LIBS += -L$$OUT_PWD/../LibExpression/
 LIBS += -lLibExpression
