@@ -12,5 +12,5 @@ bool DisjonctiveForm::evaluate() const
 
 QSharedPointer<Expression<bool>> DisjonctiveForm::clone() const
 {
-     return DesignPattern::factory<DisjonctiveForm>(*this);    
+     return QSharedPointer<DisjonctiveForm>::create(*this);
 }

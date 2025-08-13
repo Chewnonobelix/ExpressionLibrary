@@ -8,4 +8,4 @@ TEMPLATE = subdirs
 
 SUBDIRS = LibExpression \
      \
-    Test
+    ExpressionTests

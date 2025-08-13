@@ -2,7 +2,6 @@
 #define VALUEEXPRESSION
 
 #include "expression.h"
-#include "designpattern.h"
 
 template<class T>
 class  ValueExpression: public Expression<T>
@@ -30,7 +29,7 @@ public:
 
     QSharedPointer<Expression<T>> clone() const override
     {
-        return DesignPattern::factory<ValueExpression<T>>(*this);
+        return QSharedPointer<ValueExpression<T>>::create(*this);
     }
 };
 

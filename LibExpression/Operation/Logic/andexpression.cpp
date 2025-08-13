@@ -7,5 +7,5 @@ bool AndExpression::evaluate() const
 
 QSharedPointer<Expression<bool> > AndExpression::clone() const
 {
-    return DesignPattern::factory<AndExpression>(*this);
+    return QSharedPointer<AndExpression>::create(*this);
 }

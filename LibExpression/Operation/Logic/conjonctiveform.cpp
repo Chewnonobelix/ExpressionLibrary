@@ -12,5 +12,5 @@ bool ConjonctiveForm::evaluate() const
 
 QSharedPointer<Expression<bool>> ConjonctiveForm::clone() const
 {
-     return DesignPattern::factory<ConjonctiveForm>(*this);    
+     return QSharedPointer<ConjonctiveForm>::create(*this);
 }

@@ -23,7 +23,7 @@ public:
 
     QSharedPointer<Expression<T>> clone() const override
     {
-        return DesignPattern::factory<ConstantExpression>(*this);
+        return QSharedPointer<ConstantExpression>::create(*this);
     }
 };
 #endif // CONSTANTEXPRESSION_H

@@ -3,7 +3,6 @@
 
 #include <Core/expression_global.h>
 #include "Core/naryexpression.h"
-#include "designpattern.h"
 
 class EXPRESSIONSHARED_EXPORT ConjonctiveForm: public NaryExpression<bool>
 {

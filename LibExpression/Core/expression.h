@@ -1,7 +1,6 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
-#include "designpattern.h"
 #include <QSharedPointer>
 
 template <class T> class Expression {

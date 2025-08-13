@@ -7,5 +7,5 @@ bool EquivalentExpression::evaluate() const
 
 QSharedPointer<Expression<bool> > EquivalentExpression::clone() const
 {
-    return DesignPattern::factory<EquivalentExpression>(*this);
+    return QSharedPointer<EquivalentExpression>::create(*this);
 }

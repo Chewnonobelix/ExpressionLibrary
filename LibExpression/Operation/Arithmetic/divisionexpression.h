@@ -18,7 +18,7 @@ public:
 
     QSharedPointer<Expression<T>> clone() const override
     {
-        return DesignPattern::factory<DivisionExpression<T>>(*this);
+        return QSharedPointer<DivisionExpression<T>>::create(*this);
     }
 };
 

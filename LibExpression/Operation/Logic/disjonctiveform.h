@@ -3,7 +3,6 @@
 
 #include "Core/expression_global.h"
 #include "Core/naryexpression.h"
-#include "designpattern.h"
 
 class EXPRESSIONSHARED_EXPORT DisjonctiveForm: public NaryExpression<bool>
 {
